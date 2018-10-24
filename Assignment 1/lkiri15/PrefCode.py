@@ -27,7 +27,7 @@ def parse(fromF, toF):
           lastSize += 1
         result.append(str(bin(last)[2:]).zfill(len))
   for res in result:
-    out.write(res + ' ')
+    out.write(res)
 
 
 

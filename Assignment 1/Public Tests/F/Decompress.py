@@ -2,9 +2,6 @@ import sys
 import math
 import struct
 
-def decode(buff):
-  return int(buff, 2).to_bytes(len(buff) // 8, byteorder='big')
-
 def parse(fromF, codeF, toF):
   file = open(fromF, 'rb')
   code = open(codeF, 'rb')
@@ -39,14 +36,16 @@ def parse(fromF, codeF, toF):
         else:
           out.write(bytes([32]))
         buff2 = buff2[len(last):]
-        last = -1
+        if buff2 in lengths:
+          last = buff2
+        else:
+          last = -1
   if last != -1:
     if lengths[last] != 0:
       out.write(bytes([225, 131, 144 + lengths[last] - 1]))
     else:
       out.write(bytes([32]))
     buff2 = buff2[len(last):]
-    last = -1
 
 
 

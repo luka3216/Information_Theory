@@ -65,7 +65,7 @@ def parse(fromF, toF):
   bitmap = heapsort(bitmap)
   for x in bitmap:
     sum += len(x[1]) * lengths[x[0]]
-    out.write(x[1] + " ")
+    out.write(x[1])
   
 
 
